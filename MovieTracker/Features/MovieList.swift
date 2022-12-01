@@ -25,7 +25,6 @@ struct MovieList: View {
           }
         }
       }
-
       .padding()
       .navigationTitle("Movies")
       .listStyle(.plain)

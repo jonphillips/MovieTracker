@@ -14,11 +14,22 @@ struct MovieDetail: View {
         Text("Not yet seen")
       }
 //      Text(movie.viewed ? "I have seen" : "Not yet seen")
+      if let synopsis = movie.synopsis {
+        Text(synopsis)
+          .font(.caption)
+          .padding()
+      }
       Text("Starring")
         .font(.headline)
         .padding(.top, 20)
       ForEach(movie.performers) { performer in
         Text(performer.name)
+      }
+      if let directedBy = movie.directedBy {
+        Text("Directed By")
+          .font(.headline)
+          .padding(.top, 20)
+        Text(directedBy)
       }
     }
   }
@@ -26,6 +37,8 @@ struct MovieDetail: View {
 
 struct MovieDetail_Previews: PreviewProvider {
   static var previews: some View {
-    MovieDetail(movie: Movie.previewData[0])
+    MovieDetail(movie: Movie.previewData[1])
+    MovieDetail(movie: Movie.previewData[2])
+    MovieDetail(movie: Movie.previewData[3])
   }
 }
