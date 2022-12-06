@@ -2,6 +2,9 @@ import SwiftUI
 
 struct MovieDetail: View {
   @Binding var movie: Movie
+  @EnvironmentObject var movieStore: MovieStore
+  @State var isPresentingMovieForm: Bool = false
+  @State var editMovieFormData: Movie.FormData = Movie.FormData()
 
   var body: some View {
     ScrollView {
@@ -15,7 +18,6 @@ struct MovieDetail: View {
       }
       Toggle("Have Seen", isOn: $movie.viewed)
         .fixedSize()
-//      Text(movie.viewed ? "I have seen" : "Not yet seen")
       Text("Starring")
         .font(.headline)
         .padding(.top, 20)
@@ -29,6 +31,33 @@ struct MovieDetail: View {
         Text(directedBy)
       }
     }
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button("Edit") {
+          editMovieFormData = movie.dataForForm
+          isPresentingMovieForm.toggle()
+        }
+      }
+    }
+    .sheet(isPresented: $isPresentingMovieForm) {
+      NavigationStack {
+        MovieForm(data: $editMovieFormData)
+          .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+              Button("Cancel") { isPresentingMovieForm.toggle() }
+
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+              Button("Save") {
+                let editedMovie = Movie.update(movie, from: editMovieFormData)
+                movieStore.updateMovie(editedMovie)
+                isPresentingMovieForm.toggle()
+              }
+            }
+          }
+      }
+    }
+
   }
 }
 

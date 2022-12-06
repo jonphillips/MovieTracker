@@ -14,6 +14,8 @@
 		FC19017E29365BEE0010F1F3 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19017D29365BEE0010F1F3 /* Movie.swift */; };
 		FC190180293670550010F1F3 /* Performer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19017F293670550010F1F3 /* Performer.swift */; };
 		FC19018329367C880010F1F3 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19018229367C880010F1F3 /* MovieDetail.swift */; };
+		FC19018629390ACE0010F1F3 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19018529390ACE0010F1F3 /* MovieStore.swift */; };
+		FCD3640729393D2600651B09 /* MovieForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD3640629393D2600651B09 /* MovieForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		FC19017D29365BEE0010F1F3 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		FC19017F293670550010F1F3 /* Performer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Performer.swift; sourceTree = "<group>"; };
 		FC19018229367C880010F1F3 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		FC19018529390ACE0010F1F3 /* MovieStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStore.swift; sourceTree = "<group>"; };
+		FCD3640629393D2600651B09 /* MovieForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 		FC19016D29365B3B0010F1F3 /* MovieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FC19018429390AB60010F1F3 /* Services */,
 				FC19018129367C760010F1F3 /* Features */,
 				FC19017C29365BE10010F1F3 /* Models */,
 				FC19016E29365B3B0010F1F3 /* MovieTrackerApp.swift */,
@@ -88,8 +93,17 @@
 			children = (
 				FC19017029365B3B0010F1F3 /* MovieList.swift */,
 				FC19018229367C880010F1F3 /* MovieDetail.swift */,
+				FCD3640629393D2600651B09 /* MovieForm.swift */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		FC19018429390AB60010F1F3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FC19018529390ACE0010F1F3 /* MovieStore.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +179,9 @@
 				FC190180293670550010F1F3 /* Performer.swift in Sources */,
 				FC19017129365B3B0010F1F3 /* MovieList.swift in Sources */,
 				FC19018329367C880010F1F3 /* MovieDetail.swift in Sources */,
+				FCD3640729393D2600651B09 /* MovieForm.swift in Sources */,
 				FC19016F29365B3B0010F1F3 /* MovieTrackerApp.swift in Sources */,
+				FC19018629390ACE0010F1F3 /* MovieStore.swift in Sources */,
 				FC19017E29365BEE0010F1F3 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

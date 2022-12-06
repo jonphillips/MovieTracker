@@ -2,9 +2,12 @@ import SwiftUI
 
 @main
 struct MovieTrackerApp: App {
-    var body: some Scene {
-        WindowGroup {
-          MovieList()
-        }
+  @StateObject var movieStore = MovieStore()
+
+  var body: some Scene {
+    WindowGroup {
+      MovieList()
+        .environmentObject(movieStore)
     }
+  }
 }

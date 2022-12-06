@@ -2,10 +2,13 @@ import SwiftUI
 
 struct MovieList: View {
   @State var movies: [Movie] = Movie.previewData
+  @EnvironmentObject var movieStore: MovieStore
+  @State var isPresentingMovieForm: Bool = false
+  @State var newMovieFormData = Movie.FormData()
 
   var body: some View {
     NavigationStack {
-      List($movies) { $movie in
+      List($movieStore.movies) { $movie in
         NavigationLink(destination: MovieDetail(movie: $movie)) {
           MovieRow(movie: movie)
         }
@@ -13,26 +16,31 @@ struct MovieList: View {
       .padding()
       .navigationTitle("Movies")
       .listStyle(.plain)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button("Add") { isPresentingMovieForm.toggle() }
+        }
+      }
+      .sheet(isPresented: $isPresentingMovieForm) {
+        NavigationStack {
+          MovieForm(data: $newMovieFormData)
+            .toolbar {
+              ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel") { isPresentingMovieForm.toggle() }
+
+              }
+              ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Save") {
+                  let newMovie = Movie.create(from: newMovieFormData)
+                  movieStore.createMovie(newMovie)
+                  isPresentingMovieForm.toggle()
+                }
+              }
+            }
+        }
+      }
     }
 
-  }
-}
-
-extension Binding: Equatable where Value: Equatable {
-    public static func == (lhs: Binding<Value>, rhs: Binding<Value>) -> Bool {
-        return lhs.wrappedValue == rhs.wrappedValue
-    }
-}
-
-extension Binding: Hashable where Value: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        self.wrappedValue.hash(into: &hasher)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    MovieList()
   }
 }
 
@@ -64,5 +72,12 @@ struct MovieRow: View {
       }
 
     }
+  }
+}
+
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    MovieList()
+      .environmentObject(MovieStore())
   }
 }
