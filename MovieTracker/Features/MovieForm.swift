@@ -3,11 +3,28 @@ import SwiftUI
 struct MovieForm: View {
   @Binding var data: Movie.FormData
   @State var newPerformerName = ""
+  @State var overlayColor = Color.black
+  @State var showTitleError: Bool = false
+  @Binding var saveButtonDisabled: Bool
   
   var body: some View {
     Form {
       VStack {
         TextFieldWithLabel(label: "Title", text: $data.title, prompt: "Enter a Title")
+          .padding()
+           .overlay(RoundedRectangle(cornerRadius: 10.0).strokeBorder(
+            overlayColor, style: StrokeStyle(lineWidth: 1.0)))
+          .onChange(of: data.title, perform: { if $0.isEmpty {
+            overlayColor = .red
+            showTitleError = true
+            saveButtonDisabled = true
+          }})
+        if showTitleError {
+          Text("You need to have a real title!")
+            .font(.caption)
+            .foregroundColor(.red)
+        }
+
         VStack(alignment: .leading) {
           Text("Synopsis")
             .modifier(FormLabel())
@@ -20,7 +37,7 @@ struct MovieForm: View {
         }
         .pickerStyle(.menu)
         TextFieldWithLabel(label: "Directed By", text: $data.directedBy)
-        
+
         Section(header:
                   HStack {
           Text("Performers").modifier(FormLabel())
@@ -75,6 +92,6 @@ struct FormLabel: ViewModifier {
 
 struct MovieForm_Previews: PreviewProvider {
   static var previews: some View {
-    MovieForm(data: Binding.constant(Movie.previewData[0].dataForForm))
+    MovieForm(data: Binding.constant(Movie.previewData[0].dataForForm), saveButtonDisabled: Binding.constant(false))
   }
 }

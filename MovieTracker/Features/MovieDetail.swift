@@ -5,6 +5,7 @@ struct MovieDetail: View {
   @EnvironmentObject var movieStore: MovieStore
   @State var isPresentingMovieForm: Bool = false
   @State var editMovieFormData: Movie.FormData = Movie.FormData()
+  @State var saveButtonDisabled: Bool = false
 
   var body: some View {
     ScrollView {
@@ -41,7 +42,7 @@ struct MovieDetail: View {
     }
     .sheet(isPresented: $isPresentingMovieForm) {
       NavigationStack {
-        MovieForm(data: $editMovieFormData)
+        MovieForm(data: $editMovieFormData, saveButtonDisabled: $saveButtonDisabled)
           .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
               Button("Cancel") { isPresentingMovieForm.toggle() }
@@ -53,6 +54,7 @@ struct MovieDetail: View {
                 movieStore.updateMovie(editedMovie)
                 isPresentingMovieForm.toggle()
               }
+              .disabled(saveButtonDisabled)
             }
           }
       }
