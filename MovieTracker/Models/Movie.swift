@@ -3,7 +3,8 @@ import Foundation
 struct Movie: Identifiable {
   var id: Int
   var title: String
-  var details: String?
+  var synopsis: String?
+  var directedBy: String?
   var genre: Genre
   var actors: [Actor] = []
   var posterUrl: URL?
