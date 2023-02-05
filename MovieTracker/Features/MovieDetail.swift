@@ -19,7 +19,7 @@ struct MovieDetail: View {
       Text("Starring")
         .font(.headline)
         .padding(.top, 20)
-      ForEach(movie.performers) { performer in
+      ForEach(movie.performers.sorted(by: Performer.nameSorter)) { performer in
         Text(performer.name)
       }
       if let directedBy = movie.directedBy {

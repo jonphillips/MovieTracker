@@ -1,9 +1,25 @@
 import Foundation
 
-struct Performer: Identifiable, Hashable {
+struct Performer: Identifiable {
   var id: UUID = UUID()
   var name: String
   var birthDate: Date?
+
+  var sortableName: String {
+    name
+      .split(separator: " ")
+      .map(String.init)
+      .reversed()
+      .joined(separator: ", ")
+  }
+
+  static let nameSorter = { (p1: Performer, p2: Performer) in
+    p1.sortableName < p2.sortableName
+  }
+
+  static let searchMatch = { (performer: Performer, searchTerm: String) in
+    performer.name.contains(searchTerm)
+  }
 }
 
 extension Performer {
@@ -12,6 +28,10 @@ extension Performer {
     formatter.dateFormat = "MM/dd/yyyy"
     return formatter.date(from: date)!
   }
+
+  static let previewData =
+    [zendaya, yeun, awkwafina, bacon, ronan, palmer, chalamet, elba, cumberbatch, king, kaluuya, holland]
+  
 
   static let awkwafina = Performer(name: "Awkwafina", birthDate: birthDate("06/02/1988"))
   static let bacon = Performer(name: "Kevin Bacon", birthDate: nil)
