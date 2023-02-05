@@ -4,7 +4,7 @@ import SwiftUI
 struct MovieTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-          MovieList()
+          TabContainer()
         }
     }
 }

@@ -14,6 +14,7 @@ struct MovieDetail: View {
         Text("Not yet seen")
       }
       Toggle("Have Seen", isOn: $movie.viewed)
+        .fixedSize()
 //      Text(movie.viewed ? "I have seen" : "Not yet seen")
 
       if let synopsis = movie.synopsis {
@@ -22,8 +23,14 @@ struct MovieDetail: View {
       Text("Starring")
         .font(.headline)
         .padding(.top, 20)
-      ForEach(movie.performers) { performer in
+      ForEach(movie.performers.sorted(by: Performer.nameSorter)) { performer in
         Text(performer.name)
+      }
+      if let directedBy = movie.directedBy {
+        Text("Directed By")
+          .font(.headline)
+          .padding(.top, 20)
+        Text(directedBy)
       }
     }
   }
