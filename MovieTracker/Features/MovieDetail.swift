@@ -15,6 +15,10 @@ struct MovieDetail: View {
       }
       Toggle("Have Seen", isOn: $movie.viewed)
 //      Text(movie.viewed ? "I have seen" : "Not yet seen")
+
+      if let synopsis = movie.synopsis {
+        Text(synopsis)
+      }
       Text("Starring")
         .font(.headline)
         .padding(.top, 20)
