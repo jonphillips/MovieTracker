@@ -1,26 +1,42 @@
 import SwiftUI
 
 struct MovieList: View {
-  @State var movies: [Movie] = Movie.previewData
+  @Binding var movies: [Movie]
 
   var body: some View {
-    NavigationStack {
-      List($movies) { $movie in
-        NavigationLink(destination: MovieDetail(movie: $movie)) {
-          MovieRow(movie: movie)
-        }
+    List($movies) { $movie in
+      NavigationLink(destination: MovieDetail(movie: $movie)) {
+        MovieRow(movie: movie)
+          .swipeActions(edge: .leading) {
+            Button {
+              movie.viewed.toggle()
+            } label: {
+              Label(movie.viewed ? "UnView" : "Viewed", systemImage: movie.viewed ? "video.slash.fill" : "eyes")
+            }
+            .tint(movie.viewed ? .gray : .blue)
+          }
+          .swipeActions(edge: .trailing) {
+            Button(role: .destructive) {
+              deleteMovie(movie)
+            } label: {
+              Label("Delete", systemImage: "trash")
+            }
+          }
       }
-      .padding()
-      .navigationTitle("Movies")
-      .listStyle(.plain)
     }
+    .listStyle(.plain)
+  }
 
+  func deleteMovie(_ movie: Movie) {
+    if let index = movies.firstIndex(where: { $0.id == movie.id }) {
+      movies.remove(at: index)
+    }
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    MovieList()
+    MovieList(movies: Binding.constant(Movie.previewData))
   }
 }
 

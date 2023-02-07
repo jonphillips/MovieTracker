@@ -12,7 +12,7 @@ struct TabContainer: View {
     Group {
       TabView(selection: $selectedTab) {
         NavigationView {
-          MovieList()
+          MovieContainer()
         }
         .tabItem {
           Label("Movies", systemImage: "film")
