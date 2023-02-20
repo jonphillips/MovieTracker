@@ -1,4 +1,3 @@
-import Foundation
 import SwiftUI
 
 class MovieStore: ObservableObject {
@@ -19,6 +18,7 @@ class MovieStore: ObservableObject {
       movies.remove(at: index)
     }
   }
+
 
 
 //  private static func fileURL() throws -> URL {

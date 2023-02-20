@@ -26,7 +26,9 @@ struct MovieList: View {
           MovieForm(data: $newMovieFormData)
             .toolbar {
               ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancel") { isPresentingMovieForm.toggle() }
+                Button("Cancel") { isPresentingMovieForm.toggle()
+                    newMovieFormData = Movie.FormData()
+                }
 
               }
               ToolbarItem(placement: .navigationBarTrailing) {
@@ -34,6 +36,7 @@ struct MovieList: View {
                   let newMovie = Movie.create(from: newMovieFormData)
                   movieStore.createMovie(newMovie)
                   isPresentingMovieForm.toggle()
+                  newMovieFormData = Movie.FormData()
                 }
               }
             }
