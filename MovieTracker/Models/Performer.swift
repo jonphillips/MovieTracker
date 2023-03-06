@@ -1,6 +1,6 @@
 import Foundation
 
-struct Performer: Identifiable, Hashable {
+struct Performer: Identifiable, Hashable, Codable {
   var id: UUID = UUID()
   var name: String
   var birthDate: Date?

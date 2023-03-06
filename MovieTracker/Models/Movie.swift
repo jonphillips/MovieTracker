@@ -1,6 +1,6 @@
 import Foundation
 
-struct Movie: Identifiable, Hashable {
+struct Movie: Identifiable, Hashable, Codable {
   var id: UUID = UUID()
   var title: String
   var synopsis: String?
@@ -13,7 +13,7 @@ struct Movie: Identifiable, Hashable {
 }
 
 extension Movie {
-  enum Genre:String, CaseIterable, Identifiable {
+  enum Genre:String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
     
     case action

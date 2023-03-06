@@ -6,6 +6,9 @@ struct MovieList: View {
   @State var isPresentingMovieForm: Bool = false
   @State var newMovieFormData = Movie.FormData()
 
+  @Environment(\.scenePhase) private var scenePhase
+  let saveAction: () -> Void
+
   var body: some View {
     NavigationStack {
       List($movieStore.movies) { $movie in
@@ -42,6 +45,9 @@ struct MovieList: View {
             }
         }
       }
+    }
+    .onChange(of: scenePhase) { phase in
+        if phase == .inactive { saveAction() }
     }
 
   }
@@ -80,7 +86,7 @@ struct MovieRow: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    MovieList()
+    MovieList() {}
       .environmentObject(MovieStore())
   }
 }
