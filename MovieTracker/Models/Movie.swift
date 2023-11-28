@@ -3,7 +3,7 @@ import Foundation
 struct Movie: Identifiable {
   let id: Int
   let title: String
-  let details: String?
+  let synopsis: String?
   let genre: Genre
   let actors: [Actor] = []
   let posterUrl: URL?
