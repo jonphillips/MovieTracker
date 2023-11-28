@@ -1,12 +1,12 @@
 import Foundation
 
 struct Movie: Identifiable {
-  var id: Int
-  var title: String
-  var details: String?
-  var genre: Genre
-  var actors: [Actor] = []
-  var posterUrl: URL?
+  let id: Int
+  let title: String
+  let details: String?
+  let genre: Genre
+  let actors: [Actor] = []
+  let posterUrl: URL?
 
   var viewed: Bool = false
 }
