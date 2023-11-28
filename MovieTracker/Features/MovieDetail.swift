@@ -35,8 +35,8 @@ struct MovieDetail: View {
   }
 }
 
-struct MovieDetail_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
+  VStack {
     MovieDetail(movie: Movie.previewData[1])
     MovieDetail(movie: Movie.previewData[2])
     MovieDetail(movie: Movie.previewData[3])
