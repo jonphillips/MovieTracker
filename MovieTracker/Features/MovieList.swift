@@ -18,23 +18,21 @@ struct MovieList: View {
   }
 }
 
-extension Binding: Equatable where Value: Equatable {
-    public static func == (lhs: Binding<Value>, rhs: Binding<Value>) -> Bool {
-        return lhs.wrappedValue == rhs.wrappedValue
-    }
-}
-
-extension Binding: Hashable where Value: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        self.wrappedValue.hash(into: &hasher)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    MovieList()
-  }
-}
+// You would need this code if you were going to use .navigationDestination
+//  .navigationDestination(for: Binding<Movie>.self) { movieBinding in
+//    MovieDetail(movie: movieBinding)
+//  }
+//extension Binding: Equatable where Value: Equatable {
+//    public static func == (lhs: Binding<Value>, rhs: Binding<Value>) -> Bool {
+//        return lhs.wrappedValue == rhs.wrappedValue
+//    }
+//}
+//
+//extension Binding: Hashable where Value: Hashable {
+//    public func hash(into hasher: inout Hasher) {
+//        self.wrappedValue.hash(into: &hasher)
+//    }
+//}
 
 struct MovieRow: View {
   let movie: Movie
@@ -65,4 +63,9 @@ struct MovieRow: View {
 
     }
   }
+}
+
+
+#Preview {
+  MovieList()
 }
