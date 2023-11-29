@@ -6,7 +6,7 @@ struct MovieList: View {
   var body: some View {
     NavigationStack {
       List(movies) { movie in
-        NavigationLink(value: movie) {
+        NavigationLink(destination: MovieDetail(movie: movie)) {
           HStack(alignment: .top) {
             AsyncImage(url: movie.posterUrl) { image in
               image
@@ -24,9 +24,6 @@ struct MovieList: View {
               .font(.title2)
           }
         }
-      }
-      .navigationDestination(for: Movie.self) { movie in
-        MovieDetail(movie: movie)
       }
       .navigationTitle("Movies")
       .padding()
