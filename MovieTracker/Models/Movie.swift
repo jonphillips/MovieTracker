@@ -1,6 +1,6 @@
 import Foundation
 
-struct Movie: Identifiable, Hashable {
+struct Movie: Identifiable {
   var id: Int
   var title: String
   var synopsis: String?
