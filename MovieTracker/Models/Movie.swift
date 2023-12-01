@@ -9,9 +9,9 @@ class Movie: Identifiable {
   let actors: [Actor]
   let posterUrl: URL?
 
-  var viewed: Bool = false
+  var viewed: Bool
 
-  init(id: Int, title: String, synopsis: String?, directedBy: String?, genre: Genre, actors: [Actor] = [], posterUrl: URL?, viewed: Bool) {
+  init(id: Int, title: String, synopsis: String?, directedBy: String?, genre: Genre, actors: [Actor] = [], posterUrl: URL?, viewed: Bool = false) {
     self.id = id
     self.title = title
     self.synopsis = synopsis
