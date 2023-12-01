@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct MovieTrackerApp: App {
@@ -6,5 +7,6 @@ struct MovieTrackerApp: App {
         WindowGroup {
           TabContainer()
         }
+        .modelContainer(for: [Movie.self])
     }
 }

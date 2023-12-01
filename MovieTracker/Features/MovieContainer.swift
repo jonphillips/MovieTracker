@@ -1,8 +1,10 @@
 import SwiftUI
+import SwiftData
 
 
 struct MovieContainer: View {
-  @State var movies = Movie.previewData
+  @Environment(\.modelContext) var modelContext
+  @Query var movies: [Movie]
   @State var displayState: MovieDisplayState = .list
 
   enum MovieDisplayState {
@@ -19,11 +21,18 @@ struct MovieContainer: View {
         }.pickerStyle(.segmented)
           .padding()
         switch displayState {
-        case .list: MovieList(movies: $movies)
-        case .grid: MovieGrid(movies: $movies)
+        case .list: MovieList(movies: movies)
+        case .grid: MovieGrid(movies: movies)
         }
       }
       .navigationTitle("Movies")
+      .onAppear {
+        if movies.isEmpty {
+            for movie in Movie.previewData {
+                modelContext.insert(movie)
+            }
+        }
+      }
     }
   }
 }

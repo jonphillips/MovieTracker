@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct MovieList: View {
-  @Binding var movies: [Movie]
+  @Environment(\.modelContext) var modelContext
+  var movies: [Movie]
 
   var body: some View {
-    List($movies) { $movie in
-      NavigationLink(destination: MovieDetail(movie: $movie)) {
+    List(movies) { movie in
+      NavigationLink(destination: MovieDetail(movie: movie)) {
         MovieRow(movie: movie)
           .swipeActions(edge: .leading) {
             Button {
@@ -28,15 +29,13 @@ struct MovieList: View {
   }
 
   func deleteMovie(_ movie: Movie) {
-    if let index = movies.firstIndex(where: { $0.id == movie.id }) {
-      movies.remove(at: index)
-    }
+    modelContext.delete(movie)
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    MovieList(movies: Binding.constant(Movie.previewData))
+    MovieList(movies: Movie.previewData)
   }
 }
 
