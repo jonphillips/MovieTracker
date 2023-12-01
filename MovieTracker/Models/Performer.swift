@@ -1,9 +1,15 @@
 import Foundation
 
-struct Performer: Identifiable {
-  let id: UUID = UUID()
+class Performer: Identifiable {
+  let id: UUID
   let name: String
   let birthDate: Date?
+
+  init(name: String, birthDate: Date?) {
+    self.id = UUID()
+    self.name = name
+    self.birthDate = birthDate
+  }
 }
 
 extension Performer {
