@@ -1,12 +1,15 @@
 import SwiftUI
 
 struct MovieList: View {
-  @State var movies: [Movie] = Movie.previewData
+  let movies: [Movie] = Movie.previewData
+  @State var hideSpoilers: Bool = false
 
   var body: some View {
     NavigationStack {
-      List($movies) { $movie in
-        NavigationLink(destination: MovieDetail(movie: $movie)) {
+      Toggle("No Spoilers!", isOn: $hideSpoilers)
+        .padding(.horizontal)
+      List(movies) { movie in
+        NavigationLink(destination: MovieDetail(movie: movie, hideSpoilers: $hideSpoilers)) {
           MovieRow(movie: movie)
         }
       }
