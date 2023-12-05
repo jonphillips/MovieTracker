@@ -16,7 +16,7 @@ struct MovieDetail: View {
       } else {
         Text("Not yet seen")
       }
-      Toggle("Have Seen", isOn: $movie.viewed)
+      Toggle("Have Seen", isOn: Bindable(movie).viewed)
         .fixedSize()
 //      Text(movie.viewed ? "I have seen" : "Not yet seen")
       if !hideSpoilers {

@@ -4,11 +4,12 @@ class Performer: Identifiable, Codable {
   var id: UUID
   var name: String
   var birthDate: Date?
-
+  
   init(name: String, birthDate: Date? = nil) {
     self.id = UUID()
     self.name = name
     self.birthDate = birthDate
+    
   }
 }
 
@@ -18,6 +19,10 @@ extension Performer {
     formatter.dateFormat = "MM/dd/yyyy"
     return formatter.date(from: date)!
   }
+
+  static let previewData =
+    [zendaya, yeun, awkwafina, bacon, ronan, palmer, chalamet, elba, cumberbatch, king, kaluuya, holland]
+  
 
   static let awkwafina = Performer(name: "Awkwafina", birthDate: birthDate("06/02/1988"))
   static let bacon = Performer(name: "Kevin Bacon", birthDate: nil)
