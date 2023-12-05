@@ -1,6 +1,7 @@
 import SwiftUI
+import SwiftData
 
-@Observable
+@Model
 class Movie: Identifiable {
   let id: Int
   let title: String
@@ -25,7 +26,7 @@ class Movie: Identifiable {
 }
 
 extension Movie {
-  enum Genre {
+  enum Genre: Codable {
     case action
     case comedy
     case drama

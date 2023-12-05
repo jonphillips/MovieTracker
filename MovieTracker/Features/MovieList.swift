@@ -1,7 +1,9 @@
 import SwiftUI
+import SwiftData
 
 struct MovieList: View {
-  let movies: [Movie] = Movie.previewData
+  @Environment(\.modelContext) private var modelContext
+  @Query(sort: \Movie.title) private var movies: [Movie]
   @State var hideSpoilers: Bool = false
 
   var body: some View {
@@ -16,6 +18,13 @@ struct MovieList: View {
       .padding()
       .navigationTitle("Movies")
       .listStyle(.plain)
+      .onAppear {
+        if movies.isEmpty {
+          for movie in Movie.previewData {
+            modelContext.insert(movie)
+          }
+        }
+      }
     }
 
   }
