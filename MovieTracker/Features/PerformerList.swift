@@ -7,7 +7,7 @@ struct PerformerList: View {
   var body: some View {
     NavigationStack {
       List {
-        ForEach(searchResults.sorted(by: Performer.nameSorter)) { performer in
+        ForEach(Performer.previewData) { performer in
           NavigationLink(performer.name) {
             PerformerDetail(performer: performer)
           }

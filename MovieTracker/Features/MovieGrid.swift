@@ -1,10 +1,3 @@
-//
-//  MovieGrid.swift
-//  MovieTracker
-//
-//  Created by Jon on 2/6/23.
-//
-
 import SwiftUI
 
 struct MovieGrid: View {
@@ -16,7 +9,7 @@ struct MovieGrid: View {
     NavigationStack {
       LazyVGrid(columns: threeColumnGrid) {
         ForEach(movies) { movie in
-          NavigationLink(destination: MovieDetail(movie: movie)) {
+          NavigationLink(destination: MovieDetail(movie: movie, hideSpoilers: Binding.constant(true))) {
             Text(movie.title).foregroundColor(.black)
               .font(.headline)
               .padding()

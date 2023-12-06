@@ -4,7 +4,7 @@ import SwiftData
 
 struct MovieContainer: View {
   @Environment(\.modelContext) var modelContext
-  @Query var movies: [Movie]
+  @Query(sort: \Movie.title) private var movies: [Movie]
   @State var displayState: MovieDisplayState = .list
 
   enum MovieDisplayState {

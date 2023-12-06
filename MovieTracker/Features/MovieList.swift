@@ -3,7 +3,7 @@ import SwiftData
 
 struct MovieList: View {
   @Environment(\.modelContext) private var modelContext
-  @Query(sort: \Movie.title) private var movies: [Movie]
+  var movies: [Movie]
   @State var hideSpoilers: Bool = false
 
   var body: some View {
@@ -63,5 +63,5 @@ struct MovieRow: View {
 
 
 #Preview {
-  MovieList()
+  MovieList(movies: Movie.previewData)
 }
