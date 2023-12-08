@@ -3,6 +3,8 @@ import SwiftUI
 struct MovieDetail: View {
   @Bindable var movie: Movie
   @Binding var hideSpoilers: Bool
+  @State var isPresentingMovieForm: Bool = false
+  @State var editMovieFormData: Movie.FormData = Movie.FormData()
 
   var body: some View {
     ScrollView {
@@ -18,7 +20,7 @@ struct MovieDetail: View {
       }
       Toggle("Have Seen", isOn: Bindable(movie).viewed)
         .fixedSize()
-//      Text(movie.viewed ? "I have seen" : "Not yet seen")
+      //      Text(movie.viewed ? "I have seen" : "Not yet seen")
       if !hideSpoilers {
         if let synopsis = movie.synopsis {
           Text(synopsis)
@@ -37,10 +39,35 @@ struct MovieDetail: View {
         Text(directedBy)
       }
     }
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button("Edit") {
+          editMovieFormData = movie.dataForForm
+          isPresentingMovieForm.toggle()
+        }
+      }
+    }
+    .sheet(isPresented: $isPresentingMovieForm) {
+      NavigationStack {
+        MovieForm(data: $editMovieFormData)
+          .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+              Button("Cancel") { isPresentingMovieForm.toggle() }
+
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+              Button("Save") {
+                Movie.update(movie, from: editMovieFormData)
+                isPresentingMovieForm.toggle()
+              }
+            }
+          }
+      }
+    }
   }
 }
 
 #Preview {
   MovieDetail(movie: Movie.previewData[0], hideSpoilers: Binding.constant(false))
-  }
+}
 

@@ -37,8 +37,12 @@ struct MovieContainer: View {
   }
 }
 
-struct MovieContainer_Previews: PreviewProvider {
-  static var previews: some View {
-    MovieContainer()
+#Preview {
+  do {
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try ModelContainer(for: Movie.self, configurations: config)
+    return MovieContainer().modelContainer (container)
+  } catch {
+    fatalError("Failed to create model container.")
   }
 }

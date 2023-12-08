@@ -19,6 +19,7 @@
 		FC85243E298D5DEE002367D6 /* PerformerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC85243D298D5DEE002367D6 /* PerformerDetail.swift */; };
 		FC85244029917F79002367D6 /* MovieGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC85243F29917F79002367D6 /* MovieGrid.swift */; };
 		FC8524422991D738002367D6 /* MovieContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8524412991D738002367D6 /* MovieContainer.swift */; };
+		FCC83C7A2B2117C700113070 /* MovieForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC83C792B2117C700113070 /* MovieForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		FC85243D298D5DEE002367D6 /* PerformerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformerDetail.swift; sourceTree = "<group>"; };
 		FC85243F29917F79002367D6 /* MovieGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGrid.swift; sourceTree = "<group>"; };
 		FC8524412991D738002367D6 /* MovieContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContainer.swift; sourceTree = "<group>"; };
+		FCC83C792B2117C700113070 /* MovieForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				FC19017029365B3B0010F1F3 /* MovieList.swift */,
 				FC19018229367C880010F1F3 /* MovieDetail.swift */,
+				FCC83C792B2117C700113070 /* MovieForm.swift */,
 				FC85243B298C3042002367D6 /* PerformerList.swift */,
 				FC85243D298D5DEE002367D6 /* PerformerDetail.swift */,
 				FC85243F29917F79002367D6 /* MovieGrid.swift */,
@@ -191,6 +194,7 @@
 				FC19017129365B3B0010F1F3 /* MovieList.swift in Sources */,
 				FC19018329367C880010F1F3 /* MovieDetail.swift in Sources */,
 				FC85243E298D5DEE002367D6 /* PerformerDetail.swift in Sources */,
+				FCC83C7A2B2117C700113070 /* MovieForm.swift in Sources */,
 				FC85244029917F79002367D6 /* MovieGrid.swift in Sources */,
 				FC19016F29365B3B0010F1F3 /* MovieTrackerApp.swift in Sources */,
 				FC8524422991D738002367D6 /* MovieContainer.swift in Sources */,
