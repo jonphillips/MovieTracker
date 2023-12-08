@@ -20,6 +20,7 @@
 		FC85244029917F79002367D6 /* MovieGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC85243F29917F79002367D6 /* MovieGrid.swift */; };
 		FC8524422991D738002367D6 /* MovieContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8524412991D738002367D6 /* MovieContainer.swift */; };
 		FCC83C7A2B2117C700113070 /* MovieForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC83C792B2117C700113070 /* MovieForm.swift */; };
+		FCC83C7D2B22A52900113070 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC83C7C2B22A52900113070 /* TextFieldWithLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		FC85243F29917F79002367D6 /* MovieGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGrid.swift; sourceTree = "<group>"; };
 		FC8524412991D738002367D6 /* MovieContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContainer.swift; sourceTree = "<group>"; };
 		FCC83C792B2117C700113070 /* MovieForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieForm.swift; sourceTree = "<group>"; };
+		FCC83C7C2B22A52900113070 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		FC19016D29365B3B0010F1F3 /* MovieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FCC83C7B2B22A51C00113070 /* Widgets */,
 				FC852434298C2F95002367D6 /* Navigation */,
 				FC19018129367C760010F1F3 /* Features */,
 				FC19017C29365BE10010F1F3 /* Models */,
@@ -116,6 +119,14 @@
 				FC852439298C2FF1002367D6 /* TabContainer.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		FCC83C7B2B22A51C00113070 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				FCC83C7C2B22A52900113070 /* TextFieldWithLabel.swift */,
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 				FC85243E298D5DEE002367D6 /* PerformerDetail.swift in Sources */,
 				FCC83C7A2B2117C700113070 /* MovieForm.swift in Sources */,
 				FC85244029917F79002367D6 /* MovieGrid.swift in Sources */,
+				FCC83C7D2B22A52900113070 /* TextFieldWithLabel.swift in Sources */,
 				FC19016F29365B3B0010F1F3 /* MovieTrackerApp.swift in Sources */,
 				FC8524422991D738002367D6 /* MovieContainer.swift in Sources */,
 				FC19017E29365BEE0010F1F3 /* Movie.swift in Sources */,
