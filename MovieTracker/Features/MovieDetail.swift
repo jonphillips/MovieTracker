@@ -16,8 +16,9 @@ struct MovieDetail: View {
       } else {
         Text("Not yet seen")
       }
-      Toggle("Have Seen", isOn: $movie.viewed)
-        .fixedSize()
+      Button { movie.viewed.toggle() } label: { Text(movie.viewed ? "I have seen" : "Not yet seen") }
+//      Toggle("Have Seen", isOn: $movie.viewed)
+//        .fixedSize()
 //      Text(movie.viewed ? "I have seen" : "Not yet seen")
       if !hideSpoilers {
         if let synopsis = movie.synopsis {
