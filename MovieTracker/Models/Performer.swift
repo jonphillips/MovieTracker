@@ -1,10 +1,16 @@
 import Foundation
 
-struct Performer: Identifiable {
-  var id: UUID = UUID()
-  var name: String
-  var birthDate: Date?
+class Performer: Identifiable {
+  let id: UUID
+  let name: String
+  let birthDate: Date?
 
+  init(name: String, birthDate: Date?) {
+    self.id = UUID()
+    self.name = name
+    self.birthDate = birthDate
+  }
+  
   var sortableName: String {
     name
       .split(separator: " ")
@@ -28,11 +34,10 @@ extension Performer {
     formatter.dateFormat = "MM/dd/yyyy"
     return formatter.date(from: date)!
   }
-
+  
   static let previewData =
     [zendaya, yeun, awkwafina, bacon, ronan, palmer, chalamet, elba, cumberbatch, king, kaluuya, holland]
   
-
   static let awkwafina = Performer(name: "Awkwafina", birthDate: birthDate("06/02/1988"))
   static let bacon = Performer(name: "Kevin Bacon", birthDate: nil)
   static let chalamet = Performer(name: "Timothée Chalamet", birthDate: birthDate("12/27/1995"))
@@ -47,3 +52,6 @@ extension Performer {
   static let yeun = Performer(name: "Steven Yeun", birthDate: birthDate("12/21/1983"))
   static let zendaya = Performer(name: "Zendaya", birthDate: birthDate("09/01/1996"))
 }
+
+
+

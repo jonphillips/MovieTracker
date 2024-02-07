@@ -1,22 +1,16 @@
 import SwiftUI
 
 struct PerformerList: View {
-  @State var performers: [Performer] = Performer.previewData
+  let performers: [Performer] = Performer.previewData
   @State var searchText: String = ""
-
+  
   var body: some View {
-    NavigationStack {
-      List {
-        ForEach(searchResults.sorted(by: Performer.nameSorter)) { performer in
-          NavigationLink(performer.name) {
-            PerformerDetail(performer: performer)
-          }
-        }
-      }
+    List(searchResults.sorted(by: Performer.nameSorter)) { performer in
+      Text(performer.name)
     }
     .searchable(text: $searchText)
   }
-
+  
   var searchResults: [Performer] {
     if searchText.isEmpty {
       return performers
@@ -26,8 +20,8 @@ struct PerformerList: View {
   }
 }
 
-struct PerformerList_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
+  NavigationStack {
     PerformerList()
   }
 }

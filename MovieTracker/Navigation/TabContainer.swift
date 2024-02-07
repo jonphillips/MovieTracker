@@ -1,40 +1,28 @@
 import SwiftUI
 
 struct TabContainer: View {
-  @State private var selectedTab: Tab = .movies
-  
-  enum Tab {
-    case movies
-    case performers
-  }
   
   var body: some View {
-    Group {
-      TabView(selection: $selectedTab) {
-        NavigationView {
-          MovieContainer()
-        }
-        .tabItem {
-          Label("Movies", systemImage: "film")
-            .accessibility(label: Text("Movies"))
-        }
-        .tag(Tab.movies)
-        
-        NavigationView {
-          PerformerList()
-        }
-        .tabItem {
-          Label("Performers", systemImage: "person")
-            .accessibility(label: Text("Performers"))
-        }
-        .tag(Tab.performers)
+    TabView {
+      NavigationStack {
+        MovieContainer()
+      }
+      .tabItem {
+        Label("Movies", systemImage: "film")
+      }
+      
+      NavigationStack {
+        PerformerList()
+      }
+      .badge(Performer.previewData.count)
+      .tabItem {
+        Label("Performers", systemImage: "person")
       }
     }
   }
 }
 
-struct TabContainer_Previews: PreviewProvider {
-  static var previews: some View {
-    TabContainer()
-  }
+#Preview {
+  TabContainer()
 }
+

@@ -9,8 +9,8 @@ struct PerformerDetail: View {
   }
 }
 
-struct PerformerDetail_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
+  NavigationStack {
     PerformerDetail(performer: Performer.previewData[0])
   }
 }
