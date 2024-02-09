@@ -97,12 +97,10 @@ struct MovieRow: View {
 
 
 #Preview {
-  do {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try ModelContainer(for: Movie.self, configurations: config)
-    return MovieList(movies: Movie.previewData, hideSpoilers: Binding.constant(false))
-      .modelContainer (container)
-  } catch {
-    fatalError("Failed to create model container.")
+  let preview = PreviewContainer([Movie.self])
+  let movies = Movie.previewData
+  return NavigationStack {
+    MovieList(movies: movies, hideSpoilers: Binding.constant(true))
+      .modelContainer (preview.container)
   }
 }

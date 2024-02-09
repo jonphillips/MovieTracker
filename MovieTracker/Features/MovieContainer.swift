@@ -7,7 +7,7 @@ struct MovieContainer: View {
   @Query(sort: \Movie.title) var movies: [Movie]
   @State private var displayState: MovieDisplayState = .list
   @State private var hideSpoilers: Bool = false
-
+  
   enum MovieDisplayState {
     case list
     case grid
@@ -37,11 +37,10 @@ struct MovieContainer: View {
 }
 
 #Preview {
-  do {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try ModelContainer(for: Movie.self, configurations: config)
-    return NavigationStack { MovieContainer().modelContainer (container) }
-  } catch {
-    fatalError("Failed to create model container.")
+  let preview = PreviewContainer([Movie.self])
+  preview.add(items: Movie.previewData)
+  return NavigationStack {
+    MovieContainer()
+      .modelContainer (preview.container)
   }
 }

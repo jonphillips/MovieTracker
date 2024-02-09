@@ -68,6 +68,11 @@ struct MovieDetail: View {
 }
 
 #Preview {
-  MovieDetail(movie: Movie.previewData[0], hideSpoilers: Binding.constant(false))
+  let preview = PreviewContainer([Movie.self])
+  let movie = Movie.previewData[0]
+  return NavigationStack {
+    MovieDetail(movie: movie, hideSpoilers: Binding.constant(true))
+      .modelContainer (preview.container)
+  }
 }
 
