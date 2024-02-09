@@ -3,8 +3,8 @@ import SwiftUI
 struct MovieDetail: View {
   @Bindable var movie: Movie
   @Binding var hideSpoilers: Bool
-  @State var isPresentingMovieForm: Bool = false
-  @State var editMovieFormData: Movie.FormData = Movie.FormData()
+  @State private var isPresentingMovieForm: Bool = false
+  @State private var editMovieFormData: Movie.FormData = Movie.FormData()
 
   var body: some View {
     ScrollView {

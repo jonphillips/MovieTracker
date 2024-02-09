@@ -9,7 +9,18 @@ class Performer: Identifiable, Codable {
     self.id = UUID()
     self.name = name
     self.birthDate = birthDate
-    
+  }
+
+  var sortableName: String {
+    name
+      .split(separator: " ")
+      .map(String.init)
+      .reversed()
+      .joined(separator: ", ")
+  }
+
+  static let nameSorter = { (p1: Performer, p2: Performer) in
+    p1.sortableName < p2.sortableName
   }
 }
 

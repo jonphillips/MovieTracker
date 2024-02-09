@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct PerformerList: View {
-  @State var performers: [Performer] = Performer.previewData
-  @State var searchText: String = ""
+  var performers: [Performer] = Performer.previewData
+  @State private var searchText: String = ""
 
   var body: some View {
     NavigationStack {
       List {
-        ForEach(Performer.previewData) { performer in
+        ForEach(searchResults.sorted(by: Performer.nameSorter)) { performer in
           NavigationLink(performer.name) {
             PerformerDetail(performer: performer)
           }
