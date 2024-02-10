@@ -5,12 +5,10 @@ struct PerformerList: View {
   @State private var searchText: String = ""
 
   var body: some View {
-    NavigationStack {
-      List {
-        ForEach(searchResults.sorted(by: Performer.nameSorter)) { performer in
-          NavigationLink(performer.name) {
-            PerformerDetail(performer: performer)
-          }
+    List {
+      ForEach(searchResults.sorted(by: Performer.nameSorter)) { performer in
+        NavigationLink(performer.name) {
+          PerformerDetail(performer: performer)
         }
       }
     }
@@ -21,7 +19,9 @@ struct PerformerList: View {
     if searchText.isEmpty {
       return performers
     } else {
-      return performers.filter { $0.name.contains(searchText) }
+      return performers.filter { performer in
+        Performer.searchMatch(performer, searchText)
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ struct TabContainer: View {
   var body: some View {
     Group {
       TabView(selection: $selectedTab) {
-        NavigationView {
+        NavigationStack {
           MovieContainer()
         }
         .tabItem {
@@ -20,7 +20,7 @@ struct TabContainer: View {
         }
         .tag(Tab.movies)
         
-        NavigationView {
+        NavigationStack {
           PerformerList()
         }
         .tabItem {
@@ -33,8 +33,11 @@ struct TabContainer: View {
   }
 }
 
-struct TabContainer_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
+  let preview = PreviewContainer([Movie.self])
+  preview.add(items: Movie.previewData)
+  return
     TabContainer()
-  }
+      .modelContainer (preview.container)
 }
+

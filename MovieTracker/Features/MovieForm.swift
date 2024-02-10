@@ -5,12 +5,7 @@ struct MovieForm: View {
 
   var body: some View {
     Form {
-      VStack(alignment: .leading) {
-        Text("Title")
-          .bold()
-          .font(.caption)
-        TextField("Title", text: $data.title, prompt: Text("Enter a Title"))
-      }
+      TextFieldWithLabel(label: "Title", text: $data.title, prompt: "Enter a Title")
       Picker(selection: $data.genre, label: Text("Genre")) {
         ForEach(Movie.Genre.allCases) { genre in
           Text(genre.rawValue)
@@ -28,18 +23,16 @@ struct MovieForm: View {
           .bold()
           .font(.caption)
         TextEditor(text: $data.synopsis)
+          .frame(height: 200)
       }
-      VStack(alignment: .leading) {
-        Text("Directed By")
-          .bold()
-          .font(.caption)
-        TextField("Directed By", text: $data.directedBy, prompt: Text("Who yelled 'Action!'"))
-      }
+      TextFieldWithLabel(label: "Directed By", text: $data.directedBy, prompt: "Directed By")
     }
   }
 }
 
-
 #Preview {
-  MovieForm(data: Binding.constant(Movie.FormData()))
+  let preview = PreviewContainer([Movie.self])
+  let data = Binding.constant(Movie.previewData[0].dataForForm)
+  return MovieForm(data: data)
+      .modelContainer(preview.container)
 }

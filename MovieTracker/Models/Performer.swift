@@ -22,6 +22,10 @@ class Performer: Identifiable, Codable {
   static let nameSorter = { (p1: Performer, p2: Performer) in
     p1.sortableName < p2.sortableName
   }
+
+  static let searchMatch = { (performer: Performer, searchTerm: String) in
+    performer.name.contains(searchTerm)
+  }
 }
 
 extension Performer {

@@ -3,11 +3,11 @@ import SwiftUI
 struct MovieGrid: View {
   var movies: [Movie]
   @Binding var hideSpoilers: Bool
-
+  
   var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-
+  
   var body: some View {
-    NavigationStack {
+    ScrollView {
       LazyVGrid(columns: threeColumnGrid) {
         ForEach(movies) { movie in
           NavigationLink(destination: MovieDetail(movie: movie, hideSpoilers: Binding.constant(true))) {
@@ -15,14 +15,14 @@ struct MovieGrid: View {
           }
         }
       }
-      .navigationTitle("Movies")
     }
+    .navigationTitle("Movies")
   }
 }
 
 struct MovieGridCell: View {
   let movie: Movie
-
+  
   var body: some View {
     ZStack(alignment: .topTrailing) {
       AsyncImage(url: movie.posterUrl, content: { image in
@@ -48,6 +48,11 @@ struct MovieGridCell: View {
 }
 
 #Preview {
-  MovieGrid(movies: Movie.previewData, hideSpoilers: Binding.constant(false))
+  let preview = PreviewContainer([Movie.self])
+  preview.add(items: Movie.previewData)
+  return NavigationStack {
+    MovieGrid(movies: Movie.previewData, hideSpoilers: Binding.constant(true))
+      .modelContainer (preview.container)
   }
+}
 

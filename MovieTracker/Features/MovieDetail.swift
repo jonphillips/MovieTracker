@@ -9,6 +9,7 @@ struct MovieDetail: View {
   var body: some View {
     ScrollView {
       Toggle("No Spoilers!", isOn: $hideSpoilers)
+        .padding()
       AsyncImage(url: movie.posterUrl)
 
       Text(movie.title)
